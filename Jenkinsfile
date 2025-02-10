@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                     sam build
-                    sam deploy --config-file samconfig.toml --config-env staging --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-zyboahiv68dd
+                    sam deploy --config-file samconfig.toml --config-env staging
                 '''
             }
         }
