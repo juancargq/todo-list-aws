@@ -29,6 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+                    sam validate --region us-east-1
                     sam build
                     sam deploy --config-file samconfig.toml --config-env staging
                 '''
@@ -37,6 +38,7 @@ pipeline {
         
         stage('Rest Test') {
             steps {
+                def BASE_URL = sh( script: "aws cloudformation describe-stacks --stack-name todo-list-aws-staging --query 'Stacks[0].Outputs[?OutputKey==`BaseUrlApi`].OutputValue' --region us-east-1 --output text", returnStdout: true)
                 sh '''
                     python -m pytest --junitxml=junit-report.xml test/integration
                 '''
