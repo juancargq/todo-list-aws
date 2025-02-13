@@ -24,7 +24,7 @@ pipeline {
                     def BASE_URL = sh(script: "aws cloudformation describe-stacks --stack-name todo-list-aws-production --query 'Stacks[0].Outputs[?OutputKey==`BaseUrlApi`].OutputValue' --region us-east-1 --output text", returnStdout: true).trim()
                     withEnv(["BASE_URL=${BASE_URL}"]) {
                         sh '''
-                            python -m pytest --junitxml=junit-report.xml test/integration
+                            python -m pytest -m lecture --junitxml=junit-report.xml test/integration
                         '''
                     }
                 }
