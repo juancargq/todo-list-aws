@@ -5,7 +5,7 @@ pipeline {
             steps {
                 git 'https://github.com/juancargq/todo-list-aws.git'
                 sh '''
-                    wget https://github.com/juancargq/todo-list-aws-config/blob/production/samconfig.toml'
+                    wget https://github.com/juancargq/todo-list-aws-config/blob/production/samconfig.toml
                     ls -la
                 '''
             }
