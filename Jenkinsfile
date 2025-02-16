@@ -4,7 +4,10 @@ pipeline {
         stage('Get Code') {
             steps {
                 git 'https://github.com/juancargq/todo-list-aws.git'
-                sh 'ls -la'
+                sh '''
+                    wget https://github.com/juancargq/todo-list-aws-config/blob/production/samconfig.toml'
+                    ls -la
+                '''
             }
         }
         
