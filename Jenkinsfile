@@ -60,7 +60,7 @@ pipeline {
                 ]) {
                 sh '''
                     git checkout master
-                    git merge develop
+                    git merge -X ours develop
                     git push origin master
                 '''
                 }
