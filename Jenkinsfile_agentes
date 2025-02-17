@@ -5,14 +5,22 @@ pipeline {
             steps {
                 git branch: 'develop', url: 'https://github.com/juancargq/todo-list-aws.git'
                 sh '''
-                    wget https://github.com/juancargq/todo-list-aws-config/blob/staging/samconfig.toml
+                    whoami
+                    hostname
                     ls -la
                 '''
+                stash includes: '**/*', excludes: 'Jenkinsfile*', name: 'repo-files'
             }
         }   
         
         stage('Static Test') {
+            agent { label 'agente1' }
             steps {
+                unstash 'repo-files'
+                sh '''
+                    whoami
+                    hostname
+                '''
                 /*sh '''
                     export PATH=/var/lib/jenkins/.local/bin:$PATH
                     flake8 --exit-zero --format=pylint src > flake8.out
@@ -32,6 +40,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+                    whoami
+                    hostname
                     sam validate --region us-east-1
                     sam build
                     sam deploy --config-file samconfig.toml --config-env staging
@@ -40,7 +50,13 @@ pipeline {
         }
         
         stage('Rest Test') {
+            agent { label 'agente2' }
             steps {
+                unstash 'repo-files'
+                sh '''
+                    whoami
+                    hostname
+                '''
                 /*script {
                     def BASE_URL = sh(script: "aws cloudformation describe-stacks --stack-name todo-list-aws-staging --query 'Stacks[0].Outputs[?OutputKey==`BaseUrlApi`].OutputValue' --region us-east-1 --output text", returnStdout: true).trim()
                     withEnv(["BASE_URL=${BASE_URL}"]) {
@@ -59,6 +75,8 @@ pipeline {
                     gitUsernamePassword(credentialsId: 'github-credentials', gitToolName: 'Default')
                 ]) {
                 sh '''
+                    whoami
+                    hostname
                     git checkout master
                     git merge -X ours develop
                     git push origin master
