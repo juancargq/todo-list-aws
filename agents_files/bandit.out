@@ -1,0 +1,14 @@
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:31: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:45: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:61: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:74: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:89: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:103: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:113: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:127: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:145: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:157: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:167: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:181: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:194: [B113] Call to requests without timeout
+/home/ubuntu/todo-list-aws/test/integration/api_test.py:201: [B113] Call to requests without timeout
